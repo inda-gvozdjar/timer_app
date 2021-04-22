@@ -4,12 +4,14 @@ export default class Timer extends React.Component {
   state = {
     isActive: false,
     secondsElapsed: 100,
-    title: "Start"
+    title: "Start",
   };
 
   getSeconds() {
-    
-    return (this.state.secondsElapsed);
+    return this.state.secondsElapsed;
+  }
+  componentDidMount(){
+    this.startTime()
   }
 
   startTime = () => {
@@ -18,7 +20,7 @@ export default class Timer extends React.Component {
     this.countdown = setInterval(() => {
       this.setState(({ secondsElapsed }) => ({
         secondsElapsed: secondsElapsed - 1,
-        title: "Pause"
+        title: "Pause",
       }));
     }, 1000);
   };
@@ -32,7 +34,10 @@ export default class Timer extends React.Component {
     return (
       <div className="App">
         <div className="Timer-container">
-          <span className="Bloc-timer"> {this.state.secondsElapsed < 1 ? "0" : this.getSeconds()}</span>
+          <span className="Bloc-timer">
+            {" "}
+            {this.state.secondsElapsed < 1 ? "0" : this.getSeconds()}
+          </span>
         </div>
         <div>
           <button
