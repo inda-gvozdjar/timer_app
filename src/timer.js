@@ -8,7 +8,8 @@ export default class Timer extends React.Component {
   };
 
   getSeconds() {
-    return this.state.secondsElapsed;
+    
+    return (this.state.secondsElapsed);
   }
 
   startTime = () => {
@@ -31,7 +32,7 @@ export default class Timer extends React.Component {
     return (
       <div className="App">
         <div className="Timer-container">
-          <span className="Bloc-timer"> {this.getSeconds()}</span>
+          <span className="Bloc-timer"> {this.state.secondsElapsed < 1 ? "0" : this.getSeconds()}</span>
         </div>
         <div>
           <button
